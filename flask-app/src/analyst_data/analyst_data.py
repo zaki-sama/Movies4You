@@ -9,7 +9,8 @@ analyst_data = Blueprint('analyst_data', __name__)
 @analyst_data.route('/analyst_data', methods=['GET'])
 def get_submitters():
     cursor = db.get_db().cursor()
-    cursor.execute('select * from submitter_data')
+    cursor.execute('select * from preferences_data')
+    cursor.connection.commit()
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
