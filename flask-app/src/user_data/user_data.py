@@ -6,7 +6,6 @@ from src import db
 user_data = Blueprint('user_data', __name__)
 
 # Get all users from the DB
-# NOT LETTING ME ACCESS MOVIE_DATA
 @user_data.route('/user_data', methods=['GET'])
 def get_movies():
     cursor = db.get_db().cursor()
@@ -20,6 +19,10 @@ def get_movies():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+# POST REQUEST MOVIE PURCHASE
+
+# GET REQUEST FOR USER PREFERENCES (SIMILAR MOVIES)
 
 # Post request for user
 #@user_data.route("/moviepurchase", methods = ['POST'])

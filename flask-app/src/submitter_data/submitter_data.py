@@ -5,11 +5,11 @@ from src import db
 
 submitter_data = Blueprint('submitter_data', __name__)
 
-# Get all users from the DB
+# Get all movies from the DB
 @submitter_data.route('/submitter_data', methods=['GET'])
 def get_users():
     cursor = db.get_db().cursor()
-    cursor.execute('select * from user_data')
+    cursor.execute('select * from movie_data')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -20,11 +20,11 @@ def get_users():
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get user detail for user with particular userID
-@submitter_data.route('/submitter_data/<userID>', methods=['GET'])
-def get_user(userID):
+# Get movie detail submitter by a specific submitters
+@submitter_data.route('/submitter_data/<submitID>', methods=['GET'])
+def get_submitter_movies(submitID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from user_data where user_id = {0}'.format(userID))
+    cursor.execute('select * from submitter_data where submitted_by = {0}'.format(submitID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
