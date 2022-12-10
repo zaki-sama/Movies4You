@@ -3,14 +3,13 @@ import json
 from src import db
 
 
-customers = Blueprint('customers', __name__)
+submitter_data = Blueprint('submitter_data', __name__)
 
-# Get all customers from the DB
-@customers.route('/customers', methods=['GET'])
-def get_customers():
+# Get all users from the DB
+@submitter_data.route('/submitter_data', methods=['GET'])
+def get_users():
     cursor = db.get_db().cursor()
-    cursor.execute('select customerNumber, customerName,\
-        creditLimit from customers')
+    cursor.execute('select * from user_data')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -21,11 +20,11 @@ def get_customers():
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get customer detail for customer with particular userID
-@customers.route('/customers/<userID>', methods=['GET'])
-def get_customer(userID):
+# Get user detail for user with particular userID
+@submitter_data.route('/submitter_data/<userID>', methods=['GET'])
+def get_user(userID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from customers where customerNumber = {0}'.format(userID))
+    cursor.execute('select * from user_data where user_id = {0}'.format(userID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -35,3 +34,12 @@ def get_customer(userID):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+# Post request for submitter to input a movie they submitted
+#@analyst_data.route("/movieform", methods = ['POST'])
+#def post_form():
+#   employee_id = request.form['Your ID']
+#   movie_title = request.form['Movie']
+ #  date_inputted = request.form['Date']
+#   return f'<h1>Employee {employee_id} has submitted {movie_title} on {date_inputted}.</h1>'
+
