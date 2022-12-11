@@ -203,7 +203,7 @@ INSERT INTO movie_data VALUES (44174, 'Blood: The Last Vampire', 'Finnish', 183,
 INSERT INTO movie_data VALUES (62679, '8 Seconds', 'Estonian', 110, '1990s', 9, 'PG', 'Clara Thirkettle', '11-12-2007', 24249, 33006, 73666);
 INSERT INTO movie_data VALUES (35474, 'Slave of Love, A (Raba lyubvi)', 'Croatian', 136, '1700s', 7, 'R', 'Dodi Janicijevic', '23-04-2006', 35913, 65725, 85307);
 INSERT INTO movie_data VALUES (78959, 'Little Soldier (Lille soldat)', 'Korean', 152, '1940s', 4, 'PG-13', 'Carmina Brevetor', '19-05-1980', 35913, 91399, 73666);
-INSERT INTO movie_data VALUES (36296, 'Pekka ja Pätkä lumimiehen jäljillä', 'Dhivehi', 101, '1920s', 8, 'X', 'Devinne Quadri', '20-01-2010', 35913, 38272, 85307);
+INSERT INTO movie_data VALUES (36296, 'Pekka ja lumimiehen', 'Dhivehi', 101, '1920s', 8, 'X', 'Devinne Quadri', '20-01-2010', 35913, 38272, 85307);
 INSERT INTO movie_data VALUES (57104, 'So Long Letty', 'Malayalam', 198, '2010s', 8, '2R', 'Regan Bamford', '06-04-2000', 35913, 50612, 87626);
 INSERT INTO movie_data VALUES (39933, 'Happiness', 'Georgian', 168, '1860s', 9, 'G', 'Anastassia Baudy', '03-09-1984', 35913, 86404, 73666);
 INSERT INTO movie_data VALUES (77110, 'Titanica', 'Luxembourgish', 132, '2000s', 10, 'X', 'Cassondra Saket', '26-07-2009', 78752, 99108, 73666);

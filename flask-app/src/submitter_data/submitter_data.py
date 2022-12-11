@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -36,10 +36,25 @@ def get_submitter_movies(submitID):
     return the_response
 
 # Post request for submitter to input a movie they submitted
-#@analyst_data.route("/movieform", methods = ['POST'])
-#def post_form():
-#   employee_id = request.form['Your ID']
-#   movie_title = request.form['Movie']
- #  date_inputted = request.form['Date']
-#   return f'<h1>Employee {employee_id} has submitted {movie_title} on {date_inputted}.</h1>'
+@submitter_data.route("/movieform", methods = ['POST'])
+def post_form():
+    current_app.logger.info(request.form)
+    cursor = db.get_db().cursor()
+    movie_id = request.form['Movie ID']
+    title = request.form['Title']
+    language = request.form['Language']
+    runtime = request.form['Runtime (Minutes)']
+    critic_rating = request.form['Critic Rating (1-10)']
+    maturity_rating = request.form['Maturity Rating']
+    producer = request.form['Producer Name']
+    release_date = request.form['Release Date (dd-mm-yyyy)']
+    submitted_by = request.form['Your ID']
+    directed_by = request.form['Director ID']
+    genre = request.form['Genre ID']
+    query = f'INSERT INTO movie_data VALUES(\"{movie_id}\", \"{title}\", \"{language}\", \"{runtime}\", \"{critic_rating}\", \"{maturity_rating}\", \"{producer}\", \"{release_date}\", \"{submitted_by}\", \"{directed_by}\", \"{genre}\")'
+    cursor.execute(query)
+    db.get_db().commit()
+    return "New movie added"
+   # return f'<h1>Employee {employee_id} has submitted {movie_title} on {date_inputted}.</h1>'
+
 

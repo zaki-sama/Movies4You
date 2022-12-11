@@ -31,9 +31,9 @@ def create_app():
     from src.analyst_data.analyst_data  import analyst_data
 
     # Register the routes that we just imported so they can be properly handled
-    app.register_blueprint(views,       url_prefix='/classic')
-    app.register_blueprint(user_data,   url_prefix='/classic')
-    app.register_blueprint(submitter_data,    url_prefix='/classic')
-    app.register_blueprint(analyst_data,    url_prefix='/classic')
+    app.register_blueprint(views,       url_prefix='/movies4you')
+    app.register_blueprint(user_data,   url_prefix='/movies4you')
+    app.register_blueprint(submitter_data,    url_prefix='/movies4you')
+    app.register_blueprint(analyst_data,    url_prefix='/movies4you')
 
     return app
