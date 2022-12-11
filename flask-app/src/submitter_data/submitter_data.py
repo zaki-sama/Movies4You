@@ -24,7 +24,8 @@ def get_users():
 @submitter_data.route('/submitter_data/<submitID>', methods=['GET'])
 def get_submitter_movies(submitID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from submitter_data where employee_id = {0}'.format(submitID))
+    # cursor.execute('select * from submitter_data where employee_id = {0}'.format(submitID))
+    cursor.execute('select * from movie_data where submitted_by = {0}'.format(submitID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -44,6 +45,7 @@ def post_form():
     title = request.form['Title']
     language = request.form['Language']
     runtime = request.form['Runtime (Minutes)']
+    time_period = request.form['Time Period']
     critic_rating = request.form['Critic Rating (1-10)']
     maturity_rating = request.form['Maturity Rating']
     producer = request.form['Producer Name']
@@ -51,7 +53,7 @@ def post_form():
     submitted_by = request.form['Your ID']
     directed_by = request.form['Director ID']
     genre = request.form['Genre ID']
-    query = f'INSERT INTO movie_data VALUES(\"{movie_id}\", \"{title}\", \"{language}\", \"{runtime}\", \"{critic_rating}\", \"{maturity_rating}\", \"{producer}\", \"{release_date}\", \"{submitted_by}\", \"{directed_by}\", \"{genre}\")'
+    query = f'INSERT INTO movie_data VALUES(\"{movie_id}\", \"{title}\", \"{language}\", \"{runtime}\", \"{time_period}\", \"{critic_rating}\", \"{maturity_rating}\", \"{producer}\", \"{release_date}\", \"{submitted_by}\", \"{directed_by}\", \"{genre}\")'
     cursor.execute(query)
     db.get_db().commit()
     return "New movie added"
