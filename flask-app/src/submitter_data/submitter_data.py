@@ -24,7 +24,7 @@ def get_users():
 @submitter_data.route('/submitter_data/<submitID>', methods=['GET'])
 def get_submitter_movies(submitID):
     cursor = db.get_db().cursor()
-    cursor.execute('select * from submitter_data where submitted_by = {0}'.format(submitID))
+    cursor.execute('select * from submitter_data where employee_id = {0}'.format(submitID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
