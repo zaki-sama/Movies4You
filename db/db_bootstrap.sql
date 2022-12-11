@@ -4,12 +4,10 @@ CREATE DATABASE movies_4_you_db;
 GRANT ALL PRIVILEGES on movies_4_you_db.* TO 'webapp'@'%';
 FLUSH PRIVILEGES;
 
--- working inside database
 USE movies_4_you_db;
 
-DROP TABLE IF EXISTS analyst_data;
--- good
 -- analyst table
+DROP TABLE IF EXISTS analyst_data;
 CREATE TABLE analyst_data (
 	company_id INTEGER PRIMARY KEY,
 	first_name VARCHAR(50),
@@ -24,10 +22,9 @@ INSERT INTO analyst_data VALUES (33307, 'Dayle', 'Reeken', 16, '$79994.43');
 INSERT INTO analyst_data VALUES (87839, 'Meg', 'Roadnight', 21, '$97497.73');
 INSERT INTO analyst_data VALUES (15813, 'Tisha', 'Morrallee', 17, '$97038.89');
 
-DROP TABLE IF EXISTS user_data;
--- good
 -- user table
-create table user_data (
+DROP TABLE IF EXISTS user_data;
+CREATE TABLE user_data (
 	user_id INTEGER PRIMARY KEY,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
@@ -43,10 +40,9 @@ INSERT INTO user_data VALUES (00087, 'Marley', 'Ivachyov', 23, 'Colorado', 'Unit
 INSERT INTO user_data VALUES (74803, 'Clemence', 'Rahl', 46, 'Rhode Island', 'United States', 'crahl3@oracle.com');
 INSERT INTO user_data VALUES (33845, 'Alyson', 'Vines', 18, 'Nebraska', 'United States', 'avines4@google.fr');
 
-DROP TABLE IF EXISTS actor_data;
--- good
 -- actor table
-create table actor_data (
+DROP TABLE IF EXISTS actor_data;
+CREATE TABLE actor_data (
 	actor_id INTEGER PRIMARY KEY,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
@@ -60,10 +56,9 @@ INSERT INTO actor_data (actor_id, first_name, last_name, active_since, age) VALU
 INSERT INTO actor_data (actor_id, first_name, last_name, active_since, age) VALUES (06853, 'Ernie', 'Tigwell', 2010, 76);
 INSERT INTO actor_data (actor_id, first_name, last_name, active_since, age) VALUES (67904, 'Trace', 'Sotham', 2008, 76);
 
-DROP TABLE IF EXISTS director_data;
--- good
 -- director table
-create table director_data (
+DROP TABLE IF EXISTS director_data;
+CREATE TABLE director_data (
 	director_id INTEGER NOT NULL,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
@@ -92,10 +87,9 @@ INSERT INTO director_data (director_id, first_name, last_name, experience_level)
 INSERT INTO director_data (director_id, first_name, last_name, experience_level) VALUES (80903, 'Jocko', 'Sutherns',  6);
 INSERT INTO director_data (director_id, first_name, last_name, experience_level) VALUES (33006, 'Lannie', 'Weatherup', 9);
 
-DROP TABLE IF EXISTS preferences_data;
--- works
 -- preferences table
-create table preferences_data (
+DROP TABLE IF EXISTS preferences_data;
+CREATE TABLE preferences_data (
 	set_id INTEGER NOT NULL,
 	user_id INTEGER  NOT NULL,
 	primary_lang VARCHAR(50)  NOT NULL,
@@ -114,9 +108,8 @@ INSERT INTO preferences_data VALUES (28796, 06361, 'English', 128, 'X', 'G', 143
 INSERT INTO preferences_data VALUES (46174, 46691, 'English', 140, 'R', 'G', 31776, 75986, 92111);
 INSERT INTO preferences_data VALUES (37559, 07179, 'English', 154, 'PG', 'G', 99322, 51321, 01734);
 
--- everything below this is broken
 -- preference trigger table
-create table preference_trigger_data (
+CREATE TABLE preference_trigger_data (
 	set_id INTEGER NOT NULL,
 	warning_name VARCHAR(50) NOT NULL,
 	intensity_tolerance INT NOT NULL,
@@ -225,7 +218,7 @@ INSERT INTO movie_data VALUES (36138, 'Inquire Within', 'Kannada', 136, '1900s',
 INSERT INTO movie_data VALUES (73463, 'Train of Shadows (Tren de sombras)', 'Tamil', 196, '2010s', 10, 'G', 'Candi Espinho', '19-06-1981', 78330, 15547, 85307);
 
 -- triggerwarning table
-create table trigger_warning_data (
+CREATE TABLE trigger_warning_data (
 	movie_id INTEGER,
     warning_name VARCHAR(50),
     intensity INTEGER,
@@ -247,7 +240,7 @@ INSERT INTO trigger_warning_data VALUES (77110, 'Foul Language', 9);
 INSERT INTO trigger_warning_data VALUES (39933, 'Foul Language', 4);
 
 -- movie purchase table
-create table movie_purchase_data (
+CREATE TABLE movie_purchase_data (
 	movie_id INTEGER,
 	user_id INTEGER,
 	price VARCHAR(50),
@@ -264,7 +257,7 @@ INSERT INTO movie_purchase_data (movie_id, user_id, price, user_rating, watch_ti
 
 
 -- similar movie table
-create table similar_movie_data (
+CREATE TABLE similar_movie_data (
 	movie_id INT NOT NULL,
 	similar_to_id INT NOT NULL,
     CONSTRAINT similar_movie_fk_1 FOREIGN KEY (movie_id) REFERENCES movie_data (movie_id),
@@ -279,7 +272,7 @@ INSERT INTO similar_movie_data VALUES (71658, 48639);
 INSERT INTO similar_movie_data VALUES (48639, 71658);
 
 -- movie actor table
-create table movie_actor_data (
+CREATE TABLE movie_actor_data (
 	movie_id INT NOT NULL,
 	actor_id INTEGER NOT NULL,
 	character_name VARCHAR(50) NOT NULL,

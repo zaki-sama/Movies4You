@@ -20,15 +20,16 @@ def get_movies():
     the_response.mimetype = 'application/json'
     return the_response
 
-# POST REQUEST MOVIE PURCHASE
-
-# GET REQUEST FOR USER PREFERENCES (SIMILAR MOVIES)
 
 # Post request for user
-#@user_data.route("/moviepurchase", methods = ['POST'])
+#@user_data.route('/moviepurchase', methods = ['POST'])
 #def post_form():
+#   current_app.logger.info(request.form)
 #   first_name = request.form['first']
 #   last_name = request.form['last']
 #   movie = request.form['movie title']
 #   ship_state = request.form['select your state']
-#   return f'<h1>Hello {first_name} {last_name}, you have purchased {movie}.</h1>'
+#   query =  f'<h1>Hello {first_name} {last_name}, you have purchased {movie}.</h1>'
+#   cursor.execute(query)
+ #  db.get_db().commit()
+ #  return 'Your movie purchase has been made.'
