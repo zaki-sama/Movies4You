@@ -20,12 +20,26 @@ def get_users():
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get movie detail submitter by a specific submitters
+# Get submitter data
 @submitter_data.route('/submitter_data/<submitID>', methods=['GET'])
-def get_submitter_movies(submitID):
+def get_submitter_data(submitID):
     cursor = db.get_db().cursor()
-    # cursor.execute('select * from submitter_data where employee_id = {0}'.format(submitID))
-    cursor.execute('select * from movie_data where submitted_by = {0}'.format(submitID))
+    cursor.execute('SELECT first_name, last_name, address_state, address_country, Count(submitted_by) as num_submission FROM submitter_data, movie_data WHERE employee_id = {0} AND submitted_by = {0}'.format(submitID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Get submitter data
+@submitter_data.route('/submitter_data/<submitID>/num_supervisees', methods=['GET'])
+def get_submitter_supervisees(submitID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT Count(employee_id) as num_supervisees FROM submitter_data WHERE supervisor_id = {0}'.format(submitID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
