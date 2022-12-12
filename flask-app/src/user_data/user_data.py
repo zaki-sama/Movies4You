@@ -20,20 +20,6 @@ def get_movies():
     the_response.mimetype = 'application/json'
     return the_response
 
-
-# Post request for user
-#@user_data.route('/moviepurchase', methods = ['POST'])
-#def post_form():
-#   current_app.logger.info(request.form)
-#   first_name = request.form['first']
-#   last_name = request.form['last']
-#   movie = request.form['movie title']
-#   ship_state = request.form['select your state']
-#   query =  f'<h1>Hello {first_name} {last_name}, you have purchased {movie}.</h1>'
-#   cursor.execute(query)
- #  db.get_db().commit()
- #  return 'Your movie purchase has been made.'
-
 @submitter_data.route("/userpreferences", methods=['POST'])
 def post_form():
     current_app.logger.info(request.form)
@@ -63,5 +49,7 @@ def post_form():
     cursor.execute(query)
     db.get_db().commit()
     return "User Preferences added"
+
+
 
 
