@@ -21,7 +21,7 @@ def get_movies():
     return the_response
 
 @user_data.route("/userpreferences", methods=['POST'])
-def post_form():
+def post_form_preferences():
     current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
     fav_director_id = request.form['Favorite Director']
@@ -39,7 +39,7 @@ def post_form():
 
 #ADD PREFERENCES ROUTE
 @user_data.route("/usertriggers", methods=['POST'])
-def post_form():
+def post_form_triggers():
     current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
     set_id = request.form['Preferences Set ID']
