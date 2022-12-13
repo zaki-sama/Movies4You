@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -20,7 +20,7 @@ def get_movies():
     the_response.mimetype = 'application/json'
     return the_response
 
-@submitter_data.route("/userpreferences", methods=['POST'])
+@user_data.route("/userpreferences", methods=['POST'])
 def post_form():
     current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
@@ -38,7 +38,7 @@ def post_form():
     return "User info added"
 
 #ADD PREFERENCES ROUTE
-@submitter_data.route("/usertriggers", methods=['POST'])
+@user_data.route("/usertriggers", methods=['POST'])
 def post_form():
     current_app.logger.info(request.form)
     cursor = db.get_db().cursor()
