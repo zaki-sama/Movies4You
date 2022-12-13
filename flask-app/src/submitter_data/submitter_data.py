@@ -22,7 +22,7 @@ def get_genre():
 
 # Get all directors from the DB
 @submitter_data.route('/director_data', methods=['GET'])
-def get_direectors():
+def get_directors():
     cursor = db.get_db().cursor()
     cursor.execute('select * from director_data')
     row_headers = [x[0] for x in cursor.description]
