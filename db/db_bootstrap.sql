@@ -102,7 +102,7 @@ CREATE TABLE preferences_data (
 	CONSTRAINT pref_pk PRIMARY KEY (set_id)
 );
 
-INSERT INTO preferences_data VALUES (20014, 34030, 'Spanish', 71, 'MA', 'PG', 06348, 43537, 66730);
+INSERT INTO preferences_data VALUES (20014, 11029, 'Spanish', 71, 'MA', 'PG', 06348, 43537, 66730);
 INSERT INTO preferences_data VALUES (46255, 83170, 'Portuguese', 95, 'PG-13', 'G', 37644, 53633, 90920);
 INSERT INTO preferences_data VALUES (28796, 06361, 'English', 128, 'X', 'G', 14300, 23552, 15265);
 INSERT INTO preferences_data VALUES (46174, 46691, 'English', 140, 'R', 'G', 31776, 75986, 92111);
@@ -245,8 +245,7 @@ CREATE TABLE movie_purchase_data (
 	user_id INTEGER,
 	price VARCHAR(50),
 	user_rating INTEGER,
-	watch_time INTEGER,
-    CONSTRAINT movie_purchase_fk_1 FOREIGN KEY (user_id) REFERENCES user_data (user_id)
+	watch_time INTEGER
 );
 
 INSERT INTO movie_purchase_data (movie_id, user_id, price, user_rating, watch_time) VALUES (44174, 85739, '$0.50', 2, 95);
