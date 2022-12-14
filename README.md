@@ -20,6 +20,8 @@ Using the app as a movie submitter:
 2. Submit movies, genres, and directors to the database
 4. See all movies in the database
 
+Link to our video for this project: https://drive.google.com/file/d/1GUivQIBOZE3G0m1_P30sPmsega0mfT6u/view?usp=share_link
+
 
 
 
